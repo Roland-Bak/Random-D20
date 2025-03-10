@@ -8,14 +8,41 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var d20Value = "Red D20-start"
+    
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        ZStack  {
+            Image("wooden-surface").resizable()
+            VStack {
+
+                Image(d20Value)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width:250 , height: 250)
+                    .padding(100.0)
+                    
+            VStack {
+
+                    Button(action: RollD20) {
+                        Text("Roll D20")
+                            .font(.title)
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.blue)
+                            .cornerRadius(10)
+                    }.padding(100.0)
+                }
+            }
+        }.ignoresSafeArea()
+        
+
+    }
+    
+    func RollD20() {
+        print("Rolling D20")
+        d20Value = "Red D20-" + String(Int.random(in: 1...20))
     }
 }
 
