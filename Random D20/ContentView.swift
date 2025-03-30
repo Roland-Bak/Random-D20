@@ -25,24 +25,22 @@ struct ContentView: View {
                     
             VStack {
 
-                    Button(action: RollD20) {
-                        Text("Roll D20")
-                            .font(.title)
-                            .foregroundColor(.white)
-                            .padding()
-                            .background(Color.indigo)
-                            .cornerRadius(10)
-                    }.padding(100.0)
+                Button("Roll D20") {
+                    RollD20(d20Value: $d20Value)
+                    // Pass as a Binding
+                }
+                .font(.title)
+                .foregroundColor(.white)
+                .padding()
+                .background(Color.indigo)
+                .cornerRadius(10)
+                .padding()
+                
                 }
             }
         }.ignoresSafeArea()
         
 
-    }
-    
-    func RollD20() {
-        print("Rolling D20")
-        d20Value = "Red D20-" + String(Int.random(in: 1...20))
     }
 }
 
